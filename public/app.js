@@ -49,16 +49,15 @@ const projects = [
   },
   {
     index: "005",
-    title: "Heart & Soul",
-    subtitle: "Volleyball Training",
+    title: "Book of Elijah",
+    subtitle: "Comparative Scripture Reader",
     description:
-      "A digital home for athlete development, private coaching, volleyball services, and earned player trust.",
-    url: "https://heartsoulvolleyball.onrender.com/",
-    page: "projects/heart-soul-volleyball.html",
-    status: "Beta",
-    tags: ["Sports", "Coaching", "Local Business"],
-    visual: "image",
-    image: "assets/projects/heart-soul-volleyball.png"
+      "An ancient-text reading room placing the KJV beside an independent, source-language translation in progress.",
+    url: "https://book-of-elijah.onrender.com/",
+    page: "projects/book-of-elijah.html",
+    status: "Live",
+    tags: ["Ancient Texts", "AI Translation", "Reader"],
+    visual: "scroll"
   },
   {
     index: "006",
@@ -72,18 +71,6 @@ const projects = [
     tags: ["Interactive", "Game Design", "Couples"],
     visual: "image",
     image: "assets/projects/cupids-arrow.png"
-  },
-  {
-    index: "007",
-    title: "Book of Elijah",
-    subtitle: "Comparative Scripture Reader",
-    description:
-      "An ancient-text reading room placing the KJV beside an independent, source-language translation in progress.",
-    url: "https://book-of-elijah.onrender.com/",
-    page: "projects/book-of-elijah.html",
-    status: "Live",
-    tags: ["Ancient Texts", "AI Translation", "Reader"],
-    visual: "scroll"
   }
 ];
 
