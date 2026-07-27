@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: touchofdavinci
+    runtime: static
+    buildCommand: echo "Touch of DaVinci static site ready"
+    staticPublishPath: ./public
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
