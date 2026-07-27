@@ -49,16 +49,15 @@ const projects = [
   },
   {
     index: "005",
-    title: "Heart & Soul",
-    subtitle: "Volleyball Training",
+    title: "Book of Elijah",
+    subtitle: "Comparative Scripture Reader",
     description:
-      "A digital home for athlete development, private coaching, volleyball services, and earned player trust.",
-    url: "https://heartsoulvolleyball.onrender.com/",
-    page: "projects/heart-soul-volleyball.html",
-    status: "Beta",
-    tags: ["Sports", "Coaching", "Local Business"],
-    visual: "image",
-    image: "assets/projects/heart-soul-volleyball.png"
+      "An ancient-text reading room placing the KJV beside an independent, source-language translation in progress.",
+    url: "https://book-of-elijah.onrender.com/",
+    page: "projects/book-of-elijah.html",
+    status: "Live",
+    tags: ["Ancient Texts", "AI Translation", "Reader"],
+    visual: "scroll"
   },
   {
     index: "006",
@@ -114,12 +113,31 @@ function createImageVisual(project) {
     </div>`;
 }
 
+function createScrollVisual() {
+  return `
+    <div class="scroll-screen" aria-hidden="true">
+      <div class="scroll-cap"></div>
+      <div class="scroll-page">
+        <div class="scroll-brand"><i>E</i><span>THE BOOK OF ELIJAH</span></div>
+        <div class="scroll-rule"></div>
+        <div class="scroll-columns">
+          <div><b>ELIJAH</b><p><em>1</em> A record of the origin, approached again through the ancient language.</p></div>
+          <div><b>KING JAMES</b><p><em>1</em> The book of the generation of Jesus Christ, the son of David.</p></div>
+        </div>
+        <div class="scroll-folio">READ / COMPARE / QUESTION</div>
+      </div>
+      <div class="scroll-cap scroll-cap-bottom"></div>
+    </div>`;
+}
+
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
     : project.visual === "console"
       ? createConsoleVisual()
-      : createImageVisual(project);
+      : project.visual === "scroll"
+        ? createScrollVisual()
+        : createImageVisual(project);
   const projectUrl = project.page || project.url;
   const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
 

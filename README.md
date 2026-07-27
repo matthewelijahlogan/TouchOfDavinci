@@ -11,7 +11,7 @@ Add one object to the `projects` array in `public/app.js`. Each project supports
 - description
 - live URL and status
 - tags
-- a `signal` or `console` visual treatment
+- a `signal`, `console`, `image`, or custom visual treatment
 
 ## Local preview
 
