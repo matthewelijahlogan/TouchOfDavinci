@@ -61,16 +61,15 @@ const projects = [
   },
   {
     index: "006",
-    title: "Cupid’s Arrow",
-    subtitle: "A Game for Two",
+    title: "MONA",
+    subtitle: "Elemental Cancer Research",
     description:
-      "A playful couples experience built around randomized prompts, timed challenges, and shared momentum.",
-    url: "https://cupidsarrow.onrender.com/",
-    page: "projects/cupids-arrow.html",
-    status: "Beta",
-    tags: ["Interactive", "Game Design", "Couples"],
-    visual: "image",
-    image: "assets/projects/cupids-arrow.png"
+      "An evidence-aware computational workspace for exploring any elemental combination across cancer-response data.",
+    url: "https://mona-frontend-2vie.onrender.com/",
+    page: "projects/mona.html",
+    status: "Live",
+    tags: ["Computational Oncology", "118 Elements", "Applied AI"],
+    visual: "mona"
   }
 ];
 
@@ -130,6 +129,35 @@ function createScrollVisual() {
     </div>`;
 }
 
+function createMonaVisual() {
+  return `
+    <div class="mona-screen" aria-hidden="true">
+      <svg class="mona-flow mona-flow-top" viewBox="0 0 700 180" preserveAspectRatio="none">
+        <path d="M-30 128C115 25 219 211 362 91S576 21 739 102"></path>
+        <path d="M-20 151C120 51 228 224 371 112S578 44 731 124"></path>
+        <path d="M-18 96C102 12 210 177 349 64S569 1 731 74"></path>
+      </svg>
+      <div class="mona-card-head">
+        <img src="assets/projects/mona-logo-transparent.png" alt="">
+        <span>ELEMENTAL INTELLIGENCE / 118</span>
+      </div>
+      <div class="mona-card-body">
+        <p>COMPOUND WORKSPACE</p>
+        <h4>Na <i>+</i> Au <i>+</i> O</h4>
+        <div class="mona-evidence">
+          <span><b>03</b> ELEMENTS</span>
+          <span><b>12</b> STUDIES</span>
+          <span><b>87%</b> COVERAGE</span>
+        </div>
+      </div>
+      <div class="mona-mode-strip"><span>DIRECT</span><span>HYBRID</span><span>PROJECTED</span></div>
+      <svg class="mona-flow mona-flow-bottom" viewBox="0 0 700 150" preserveAspectRatio="none">
+        <path d="M-24 94C118 4 210 162 357 67S574 14 729 77"></path>
+        <path d="M-22 119C115 31 228 187 371 91S580 42 729 101"></path>
+      </svg>
+    </div>`;
+}
+
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
@@ -137,12 +165,14 @@ function projectMarkup(project) {
       ? createConsoleVisual()
       : project.visual === "scroll"
         ? createScrollVisual()
+        : project.visual === "mona"
+          ? createMonaVisual()
         : createImageVisual(project);
   const projectUrl = project.page || project.url;
   const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
 
   return `
-    <article class="project-card reveal" data-visual="${project.visual}">
+    <article class="project-card reveal" id="project-${project.index}" data-visual="${project.visual}">
       <a class="project-visual" href="${projectUrl}" ${targetAttributes}
          aria-label="Explore ${project.title}">
         ${visual}
