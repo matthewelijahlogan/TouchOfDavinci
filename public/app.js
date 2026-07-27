@@ -72,6 +72,18 @@ const projects = [
     tags: ["Interactive", "Game Design", "Couples"],
     visual: "image",
     image: "assets/projects/cupids-arrow.png"
+  },
+  {
+    index: "007",
+    title: "Book of Elijah",
+    subtitle: "Comparative Scripture Reader",
+    description:
+      "An ancient-text reading room placing the KJV beside an independent, source-language translation in progress.",
+    url: "https://book-of-elijah.onrender.com/",
+    page: "projects/book-of-elijah.html",
+    status: "Live",
+    tags: ["Ancient Texts", "AI Translation", "Reader"],
+    visual: "scroll"
   }
 ];
 
@@ -114,12 +126,31 @@ function createImageVisual(project) {
     </div>`;
 }
 
+function createScrollVisual() {
+  return `
+    <div class="scroll-screen" aria-hidden="true">
+      <div class="scroll-cap"></div>
+      <div class="scroll-page">
+        <div class="scroll-brand"><i>E</i><span>THE BOOK OF ELIJAH</span></div>
+        <div class="scroll-rule"></div>
+        <div class="scroll-columns">
+          <div><b>ELIJAH</b><p><em>1</em> A record of the origin, approached again through the ancient language.</p></div>
+          <div><b>KING JAMES</b><p><em>1</em> The book of the generation of Jesus Christ, the son of David.</p></div>
+        </div>
+        <div class="scroll-folio">READ / COMPARE / QUESTION</div>
+      </div>
+      <div class="scroll-cap scroll-cap-bottom"></div>
+    </div>`;
+}
+
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
     : project.visual === "console"
       ? createConsoleVisual()
-      : createImageVisual(project);
+      : project.visual === "scroll"
+        ? createScrollVisual()
+        : createImageVisual(project);
   const projectUrl = project.page || project.url;
   const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
 
