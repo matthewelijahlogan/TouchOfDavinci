@@ -853,8 +853,22 @@ a {
   letter-spacing: -0.06em;
 }
 
+.manifesto .studio-belief {
+  max-width: 850px;
+  font-size: clamp(2.2rem, 3.9vw, 4.15rem);
+  line-height: 1.04;
+  letter-spacing: -0.052em;
+}
+
 .manifesto blockquote em {
   color: var(--copper);
+}
+
+.belief-attribution {
+  margin-top: 28px;
+  color: #9f7058;
+  font: 500 0.56rem/1 var(--mono);
+  letter-spacing: 0.14em;
 }
 
 .manifesto-body {
@@ -1316,6 +1330,10 @@ footer {
 
   .manifesto blockquote {
     font-size: clamp(2.55rem, 12vw, 4rem);
+  }
+
+  .manifesto .studio-belief {
+    font-size: clamp(2rem, 9.8vw, 3.2rem);
   }
 
   .capability {
