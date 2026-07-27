@@ -20,6 +20,58 @@ const projects = [
     status: "Live API",
     tags: ["FastAPI", "Analytics", "Infrastructure"],
     visual: "console"
+  },
+  {
+    index: "003",
+    title: "PodWatch",
+    subtitle: "The Podcast TV Guide",
+    description:
+      "A familiar, channel-surfing way to discover full video podcast episodes from official sources.",
+    url: "https://podwatch.onrender.com/",
+    page: "projects/podwatch.html",
+    status: "Beta",
+    tags: ["Media Discovery", "Video Podcasts", "Product"],
+    visual: "image",
+    image: "assets/projects/podwatch.png"
+  },
+  {
+    index: "004",
+    title: "Axis",
+    subtitle: "Staffing Solutions",
+    description:
+      "A secure staffing operations environment with role-aware access, protected views, and administrative control.",
+    url: "https://wheel-of-destiny-iww1.onrender.com/",
+    page: "projects/axis-staffing-solutions.html",
+    status: "Beta",
+    tags: ["Workforce Ops", "Access Control", "SaaS"],
+    visual: "image",
+    image: "assets/projects/axis-staffing-solutions.png"
+  },
+  {
+    index: "005",
+    title: "Heart & Soul",
+    subtitle: "Volleyball Training",
+    description:
+      "A digital home for athlete development, private coaching, volleyball services, and earned player trust.",
+    url: "https://heartsoulvolleyball.onrender.com/",
+    page: "projects/heart-soul-volleyball.html",
+    status: "Beta",
+    tags: ["Sports", "Coaching", "Local Business"],
+    visual: "image",
+    image: "assets/projects/heart-soul-volleyball.png"
+  },
+  {
+    index: "006",
+    title: "Cupid’s Arrow",
+    subtitle: "A Game for Two",
+    description:
+      "A playful couples experience built around randomized prompts, timed challenges, and shared momentum.",
+    url: "https://cupidsarrow.onrender.com/",
+    page: "projects/cupids-arrow.html",
+    status: "Beta",
+    tags: ["Interactive", "Game Design", "Couples"],
+    visual: "image",
+    image: "assets/projects/cupids-arrow.png"
   }
 ];
 
@@ -54,15 +106,27 @@ function createConsoleVisual() {
     </div>`;
 }
 
+function createImageVisual(project) {
+  return `
+    <div class="product-capture" aria-hidden="true">
+      <img src="${project.image}" alt="">
+      <span>BETA BUILD / LIVE CAPTURE</span>
+    </div>`;
+}
+
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
-    : createConsoleVisual();
+    : project.visual === "console"
+      ? createConsoleVisual()
+      : createImageVisual(project);
+  const projectUrl = project.page || project.url;
+  const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
 
   return `
     <article class="project-card reveal" data-visual="${project.visual}">
-      <a class="project-visual" href="${project.url}" target="_blank" rel="noopener"
-         aria-label="Launch ${project.title}">
+      <a class="project-visual" href="${projectUrl}" ${targetAttributes}
+         aria-label="Explore ${project.title}">
         ${visual}
         <span class="launch-orb">↗</span>
       </a>
@@ -76,7 +140,7 @@ function projectMarkup(project) {
             <h3>${project.title}</h3>
             <p>${project.subtitle}</p>
           </div>
-          <a href="${project.url}" target="_blank" rel="noopener">Launch ↗</a>
+          <a href="${projectUrl}" ${targetAttributes}>${project.page ? "View project" : "Launch"} ↗</a>
         </div>
         <p class="project-description">${project.description}</p>
         <div class="project-tags">
@@ -87,9 +151,14 @@ function projectMarkup(project) {
 }
 
 const projectGrid = document.getElementById("projectGrid");
-projectGrid.innerHTML = projects.map(projectMarkup).join("");
+if (projectGrid) {
+  projectGrid.innerHTML = projects.map(projectMarkup).join("");
+}
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const year = document.getElementById("year");
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
 
 if (window.location.hash) {
   requestAnimationFrame(() => {
