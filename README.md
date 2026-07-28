@@ -1,7 +1,7 @@
 # Touch of DaVinci Studios
 
 The studio portal for Touch of DaVinci. It is a lightweight static site with a
-data-driven gallery of the web services built by the studio.
+data-driven, category-filtered gallery of the products built by the studio.
 
 ## Add another project
 
@@ -11,6 +11,7 @@ Add one object to the `projects` array in `public/app.js`. Each project supports
 - description
 - live URL and status
 - tags
+- an `intelligence`, `experiences`, or `operations` category
 - a `signal`, `console`, `image`, or custom visual treatment
 
 ## Local preview

@@ -481,6 +481,54 @@ a {
   line-height: 1.8;
 }
 
+.project-categories {
+  margin: -28px 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.category-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.category-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.category-tabs button {
+  padding: 17px 18px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #7d6251;
+  cursor: pointer;
+  font: 500 0.59rem/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.category-tabs button:hover,
+.category-tabs button[aria-pressed="true"] {
+  border-bottom-color: var(--orange);
+  color: var(--cream);
+}
+
+.project-categories > p {
+  flex: 0 0 auto;
+  color: #6f5140;
+  font: 400 0.52rem/1 var(--mono);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
 .project-grid {
   display: grid;
   gap: 84px;
@@ -1661,6 +1709,7 @@ footer {
 .theme-axis .detail-hero h1 em { color: #9cff34; }
 .theme-elijah .detail-hero h1 em { color: #d5a663; }
 .theme-mona .detail-hero h1 em { color: #17a5df; }
+.theme-moments .detail-hero h1 em { color: #f3a9cd; }
 
 .theme-elijah {
   background:
@@ -1673,6 +1722,29 @@ footer {
     radial-gradient(circle at 82% 7%, rgba(17, 165, 223, 0.16), transparent 28rem),
     radial-gradient(circle at 12% 32%, rgba(242, 107, 39, 0.1), transparent 24rem),
     var(--black);
+}
+
+.theme-moments {
+  background:
+    radial-gradient(circle at 82% 7%, rgba(243, 169, 205, 0.15), transparent 28rem),
+    radial-gradient(circle at 12% 32%, rgba(95, 137, 196, 0.12), transparent 24rem),
+    var(--black);
+}
+
+.theme-moments .beta-focus article > span,
+.theme-moments .detail-media figcaption span {
+  color: #f3a9cd;
+}
+
+.moments-preview {
+  background:
+    radial-gradient(circle at 76% 16%, rgba(243, 169, 205, 0.13), transparent 20rem),
+    #100b0e;
+}
+
+.moments-preview img {
+  object-fit: contain;
+  padding: clamp(20px, 5vw, 70px);
 }
 
 .theme-mona .beta-focus article > span,
@@ -1892,6 +1964,27 @@ footer {
 
   .section-heading {
     margin-bottom: 48px;
+  }
+
+  .project-categories {
+    margin-top: -14px;
+    margin-bottom: 38px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .category-tabs {
+    width: 100%;
+  }
+
+  .category-tabs button {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .project-categories > p {
+    padding-bottom: 13px;
   }
 
   .section-heading h2 {
