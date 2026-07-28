@@ -1,6 +1,7 @@
 const projects = [
   {
     index: "001",
+    category: "intelligence",
     title: "PredIQT",
     subtitle: "Market Intelligence Terminal",
     description:
@@ -12,6 +13,7 @@ const projects = [
   },
   {
     index: "002",
+    category: "intelligence",
     title: "PredIQT API",
     subtitle: "Developer Signal Console",
     description:
@@ -23,6 +25,7 @@ const projects = [
   },
   {
     index: "003",
+    category: "experiences",
     title: "PodWatch",
     subtitle: "The Podcast TV Guide",
     description:
@@ -36,6 +39,7 @@ const projects = [
   },
   {
     index: "004",
+    category: "operations",
     title: "Axis",
     subtitle: "Staffing Solutions",
     description:
@@ -49,6 +53,7 @@ const projects = [
   },
   {
     index: "005",
+    category: "experiences",
     title: "Book of Elijah",
     subtitle: "Comparative Scripture Reader",
     description:
@@ -61,6 +66,7 @@ const projects = [
   },
   {
     index: "006",
+    category: "intelligence",
     title: "MONA",
     subtitle: "Elemental Cancer Research",
     description:
@@ -70,8 +76,29 @@ const projects = [
     status: "Live",
     tags: ["Computational Oncology", "118 Elements", "Applied AI"],
     visual: "mona"
+  },
+  {
+    index: "007",
+    category: "experiences",
+    title: "Moments",
+    subtitle: "The Meaning Archive",
+    description:
+      "A retro social camera that scores photos and short clips for presence, depth, connection, atmosphere, and coherence.",
+    url: "https://github.com/matthewelijahlogan/moments",
+    page: "projects/moments.html",
+    status: "In development",
+    tags: ["Human Experience", "Photo Scoring", "Mobile"],
+    visual: "image",
+    image: "assets/projects/moments-banner.png"
   }
 ];
+
+const categoryLabels = {
+  intelligence: "Intelligence systems",
+  experiences: "Human experiences",
+  operations: "Operational products",
+  all: "All studio work"
+};
 
 function createSignalVisual() {
   return `
@@ -199,9 +226,49 @@ function projectMarkup(project) {
 }
 
 const projectGrid = document.getElementById("projectGrid");
-if (projectGrid) {
-  projectGrid.innerHTML = projects.map(projectMarkup).join("");
+const categorySummary = document.getElementById("categorySummary");
+const categoryButtons = [...document.querySelectorAll("[data-category]")];
+const hashProject = projects.find(
+  project => window.location.hash === `#project-${project.index}`
+);
+let activeCategory = hashProject ? hashProject.category : "experiences";
+
+function renderProjects(category, animate = false) {
+  if (!projectGrid) return;
+
+  activeCategory = category;
+  const visibleProjects = category === "all"
+    ? projects
+    : projects.filter(project => project.category === category);
+
+  projectGrid.innerHTML = visibleProjects.map(projectMarkup).join("");
+  categoryButtons.forEach(button => {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.category === activeCategory)
+    );
+  });
+
+  if (categorySummary) {
+    categorySummary.textContent =
+      `${categoryLabels[category]} / ${visibleProjects.length} ` +
+      `${visibleProjects.length === 1 ? "project" : "projects"}`;
+  }
+
+  if (animate && typeof revealObserver !== "undefined") {
+    projectGrid.querySelectorAll(".reveal").forEach(element => {
+      revealObserver.observe(element);
+    });
+  }
 }
+
+renderProjects(activeCategory);
+
+categoryButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    renderProjects(button.dataset.category, true);
+  });
+});
 
 const year = document.getElementById("year");
 if (year) {
