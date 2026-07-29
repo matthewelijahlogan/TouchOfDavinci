@@ -90,6 +90,18 @@ const projects = [
     tags: ["Human Experience", "Photo Scoring", "Mobile"],
     visual: "image",
     image: "assets/projects/moments-banner.png"
+  },
+  {
+    index: "008",
+    category: "intelligence",
+    title: "Sentinel AI",
+    subtitle: "Multi-Sensor Aerial Awareness",
+    description:
+      "A red-line command center combining drone-focused visual detection, persistent motion tracks, RF spectrum signals, and time-window sensor fusion.",
+    url: "https://sentinel-ai.onrender.com/",
+    status: "Alpha",
+    tags: ["Computer Vision", "RF Signals", "Sensor Fusion"],
+    visual: "sentinel"
   }
 ];
 
@@ -185,6 +197,24 @@ function createMonaVisual() {
     </div>`;
 }
 
+function createSentinelVisual() {
+  return `
+    <div class="sentinel-screen" aria-hidden="true">
+      <div class="sentinel-grid"></div>
+      <div class="sentinel-beam"></div>
+      <div class="sentinel-lock">
+        <span class="sentinel-crosshair"></span>
+        <strong>S</strong>
+        <i>TRACK / 008</i>
+      </div>
+      <div class="sentinel-readout">
+        <span>SENTINEL AI // MULTI-SENSOR</span>
+        <b>OPTICAL <i>●</i> RF <i>●</i> FUSION</b>
+      </div>
+      <div class="sentinel-signals"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>`;
+}
+
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
@@ -192,8 +222,10 @@ function projectMarkup(project) {
       ? createConsoleVisual()
       : project.visual === "scroll"
         ? createScrollVisual()
-        : project.visual === "mona"
+      : project.visual === "mona"
           ? createMonaVisual()
+          : project.visual === "sentinel"
+            ? createSentinelVisual()
         : createImageVisual(project);
   const projectUrl = project.page || project.url;
   const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
