@@ -106,7 +106,7 @@ const projects = [
     subtitle: "Multi-Sensor Aerial Awareness",
     description:
       "A red-line command center combining drone-focused visual detection, persistent motion tracks, RF spectrum signals, and time-window sensor fusion.",
-    url: "https://sentinel-ai.onrender.com/",
+    url: "https://sentinel-ai-dwjz.onrender.com/",
     status: "Alpha",
     tags: ["Computer Vision", "RF Signals", "Sensor Fusion"],
     visual: "sentinel"
