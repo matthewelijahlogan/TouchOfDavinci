@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100811">
+  <meta name="description" content="Personal applications and human experiences from Touch of DaVinci Studios.">
+  <title>Personal Applications | Touch of DaVinci</title>
+  <link rel="icon" href="assets/touch-of-davinci-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="collection-page" data-collection="personal">
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="topbar" id="top">
+    <div class="topbar-inner">
+      <nav class="menu menu-left" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="business.html">Business</a>
+      </nav>
+      <a class="logo-mount" href="index.html" aria-label="Touch of DaVinci Studios home">
+        <span class="logo-halo"></span>
+        <img src="assets/touch-of-davinci-logo.png" alt="Touch of DaVinci Studios">
+      </a>
+      <nav class="menu menu-right" aria-label="Secondary navigation">
+        <a href="personal.html" aria-current="page">Personal</a>
+        <a href="index.html#studio">Studio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="collection-hero section-shell">
+      <p class="eyebrow"><span></span> Collection 02 / Five applications</p>
+      <h1>Made for<em>personal life.</em></h1>
+      <p>
+        Experiences built around connection, reflection, discovery, play, and the
+        complicated beauty of being human.
+      </p>
+    </section>
+
+    <section class="work collection-work section-shell" id="work">
+      <header class="section-heading reveal">
+        <div>
+          <p class="eyebrow"><span></span> Human technology</p>
+          <h2>Useful can still<br><em>feel alive.</em></h2>
+        </div>
+        <div>
+          <div class="collection-switch">
+            <a href="business.html">Business / 05</a>
+            <a href="personal.html" aria-current="page">Personal / 05</a>
+          </div>
+          <p id="categorySummary" aria-live="polite"></p>
+        </div>
+      </header>
+      <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>TOUCH OF DAVINCI STUDIOS</strong>
+        <span>Art &middot; Code &middot; Intelligence</span>
+      </div>
+      <div class="footer-links">
+        <a href="business.html">Business Applications</a>
+        <a href="index.html#contact">Start Something</a>
+        <a href="#top">Back to top &uarr;</a>
+      </div>
+      <p>&copy; <span id="year"></span> Touch of DaVinci. Built in Pennsylvania.</p>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

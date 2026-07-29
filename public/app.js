@@ -1,6 +1,7 @@
 const projects = [
   {
     index: "001",
+    collection: "business",
     category: "intelligence",
     title: "PredIQT",
     subtitle: "Market Intelligence Terminal",
@@ -13,6 +14,7 @@ const projects = [
   },
   {
     index: "002",
+    collection: "business",
     category: "intelligence",
     title: "PredIQT API",
     subtitle: "Developer Signal Console",
@@ -25,6 +27,7 @@ const projects = [
   },
   {
     index: "003",
+    collection: "personal",
     category: "experiences",
     title: "PodWatch",
     subtitle: "The Podcast TV Guide",
@@ -39,6 +42,7 @@ const projects = [
   },
   {
     index: "004",
+    collection: "business",
     category: "operations",
     title: "Axis",
     subtitle: "Staffing Solutions",
@@ -53,6 +57,7 @@ const projects = [
   },
   {
     index: "005",
+    collection: "personal",
     category: "experiences",
     title: "Book of Elijah",
     subtitle: "Comparative Scripture Reader",
@@ -66,6 +71,7 @@ const projects = [
   },
   {
     index: "006",
+    collection: "business",
     category: "intelligence",
     title: "MONA",
     subtitle: "Elemental Cancer Research",
@@ -79,6 +85,7 @@ const projects = [
   },
   {
     index: "007",
+    collection: "personal",
     category: "experiences",
     title: "Moments",
     subtitle: "The Meaning Archive",
@@ -93,6 +100,7 @@ const projects = [
   },
   {
     index: "008",
+    collection: "business",
     category: "intelligence",
     title: "Sentinel AI",
     subtitle: "Multi-Sensor Aerial Awareness",
@@ -102,6 +110,32 @@ const projects = [
     status: "Alpha",
     tags: ["Computer Vision", "RF Signals", "Sensor Fusion"],
     visual: "sentinel"
+  },
+  {
+    index: "009",
+    collection: "personal",
+    category: "experiences",
+    title: "GradeA",
+    subtitle: "Intentional Dating Prototype",
+    description:
+      "A black-and-gold dating concept built around clear interest signals, limited conversations, trust gates, and real-world follow-through.",
+    url: "https://github.com/matthewelijahlogan/GradeA",
+    status: "Prototype",
+    tags: ["Dating", "Trust Design", "Mobile"],
+    visual: "grade"
+  },
+  {
+    index: "010",
+    collection: "personal",
+    category: "experiences",
+    title: "Cupid's Arrow",
+    subtitle: "A Game for Two",
+    description:
+      "A playful couples experience designed to create conversation, spontaneity, and a little more electricity.",
+    url: "https://github.com/matthewelijahlogan/CupidsArrow",
+    status: "Concept",
+    tags: ["Couples", "Game Design", "Connection"],
+    visual: "cupid"
   }
 ];
 
@@ -109,6 +143,8 @@ const categoryLabels = {
   intelligence: "Intelligence systems",
   experiences: "Human experiences",
   operations: "Operational products",
+  business: "Business and industry applications",
+  personal: "Personal applications",
   all: "All studio work"
 };
 
@@ -215,6 +251,31 @@ function createSentinelVisual() {
     </div>`;
 }
 
+function createGradeVisual() {
+  return `
+    <div class="grade-screen" aria-hidden="true">
+      <div class="grade-lines"></div>
+      <div class="grade-mark"><span>A</span><i>CONSENSUS TIER</i></div>
+      <div class="grade-copy">
+        <span>GRADE A / INTENT OVER NOISE</span>
+        <strong>MAKE<br>IT REAL.</strong>
+      </div>
+    </div>`;
+}
+
+function createCupidVisual() {
+  return `
+    <div class="cupid-screen" aria-hidden="true">
+      <div class="cupid-arrow"></div>
+      <div class="cupid-heart"><span></span></div>
+      <div class="cupid-copy">
+        <span>CUPID'S ARROW / PLAYER 01 + 02</span>
+        <strong>PLAY<br>CLOSER.</strong>
+      </div>
+      <div class="cupid-score">LOVE / 100</div>
+    </div>`;
+}
+
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
@@ -226,6 +287,10 @@ function projectMarkup(project) {
           ? createMonaVisual()
           : project.visual === "sentinel"
             ? createSentinelVisual()
+            : project.visual === "grade"
+              ? createGradeVisual()
+              : project.visual === "cupid"
+                ? createCupidVisual()
         : createImageVisual(project);
   const projectUrl = project.page || project.url;
   const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
@@ -260,10 +325,11 @@ function projectMarkup(project) {
 const projectGrid = document.getElementById("projectGrid");
 const categorySummary = document.getElementById("categorySummary");
 const categoryButtons = [...document.querySelectorAll("[data-category]")];
+const pageCollection = document.body.dataset.collection;
 const hashProject = projects.find(
   project => window.location.hash === `#project-${project.index}`
 );
-let activeCategory = hashProject ? hashProject.category : "experiences";
+let activeCategory = pageCollection || (hashProject ? hashProject.category : "experiences");
 
 function renderProjects(category, animate = false) {
   if (!projectGrid) return;
@@ -271,7 +337,9 @@ function renderProjects(category, animate = false) {
   activeCategory = category;
   const visibleProjects = category === "all"
     ? projects
-    : projects.filter(project => project.category === category);
+    : projects.filter(project =>
+      project.category === category || project.collection === category
+    );
 
   projectGrid.innerHTML = visibleProjects.map(projectMarkup).join("");
   categoryButtons.forEach(button => {
@@ -294,7 +362,7 @@ function renderProjects(category, animate = false) {
   }
 }
 
-renderProjects(activeCategory);
+if (projectGrid) renderProjects(activeCategory);
 
 categoryButtons.forEach(button => {
   button.addEventListener("click", () => {
