@@ -110,32 +110,6 @@ const projects = [
     status: "Alpha",
     tags: ["Computer Vision", "RF Signals", "Sensor Fusion"],
     visual: "sentinel"
-  },
-  {
-    index: "009",
-    collection: "personal",
-    category: "experiences",
-    title: "GradeA",
-    subtitle: "Intentional Dating Prototype",
-    description:
-      "A black-and-gold dating concept built around clear interest signals, limited conversations, trust gates, and real-world follow-through.",
-    url: "https://github.com/matthewelijahlogan/GradeA",
-    status: "Prototype",
-    tags: ["Dating", "Trust Design", "Mobile"],
-    visual: "grade"
-  },
-  {
-    index: "010",
-    collection: "personal",
-    category: "experiences",
-    title: "Cupid's Arrow",
-    subtitle: "A Game for Two",
-    description:
-      "A playful couples experience designed to create conversation, spontaneity, and a little more electricity.",
-    url: "https://github.com/matthewelijahlogan/CupidsArrow",
-    status: "Concept",
-    tags: ["Couples", "Game Design", "Connection"],
-    visual: "cupid"
   }
 ];
 
@@ -251,31 +225,6 @@ function createSentinelVisual() {
     </div>`;
 }
 
-function createGradeVisual() {
-  return `
-    <div class="grade-screen" aria-hidden="true">
-      <div class="grade-lines"></div>
-      <div class="grade-mark"><span>A</span><i>CONSENSUS TIER</i></div>
-      <div class="grade-copy">
-        <span>GRADE A / INTENT OVER NOISE</span>
-        <strong>MAKE<br>IT REAL.</strong>
-      </div>
-    </div>`;
-}
-
-function createCupidVisual() {
-  return `
-    <div class="cupid-screen" aria-hidden="true">
-      <div class="cupid-arrow"></div>
-      <div class="cupid-heart"><span></span></div>
-      <div class="cupid-copy">
-        <span>CUPID'S ARROW / PLAYER 01 + 02</span>
-        <strong>PLAY<br>CLOSER.</strong>
-      </div>
-      <div class="cupid-score">LOVE / 100</div>
-    </div>`;
-}
-
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
@@ -287,11 +236,7 @@ function projectMarkup(project) {
           ? createMonaVisual()
           : project.visual === "sentinel"
             ? createSentinelVisual()
-            : project.visual === "grade"
-              ? createGradeVisual()
-              : project.visual === "cupid"
-                ? createCupidVisual()
-        : createImageVisual(project);
+            : createImageVisual(project);
   const projectUrl = project.page || project.url;
   const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
 
