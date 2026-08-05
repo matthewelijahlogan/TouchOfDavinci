@@ -110,6 +110,61 @@ const projects = [
     status: "Alpha",
     tags: ["Computer Vision", "RF Signals", "Sensor Fusion"],
     visual: "sentinel"
+  },
+  {
+    index: "009",
+    collection: "personal",
+    category: "experiences",
+    title: "I Call Bullsh!t",
+    subtitle: "Calibrated Interview",
+    description:
+      "A calibrated voice-pattern interview experience that runs privately in your browser.",
+    url: "https://icb-calibrated-interview.onrender.com/",
+    status: "Live",
+    tags: ["Voice Patterns", "Private by Design", "Interview"],
+    visual: "bullshit"
+  },
+  {
+    index: "010",
+    collection: "personal",
+    category: "experiences",
+    title: "Dinner Bell",
+    subtitle: "The Family Supper Board",
+    description:
+      "A warm, local-first meal planner that brings the weekly menu, family cookbook, shopping list, and kitchen timer back around one table.",
+    url: "https://dinner-bell-byh5.onrender.com/",
+    status: "Live",
+    tags: ["Family Life", "Local First", "Meal Planning"],
+    visual: "image",
+    image: "assets/projects/dinner-bell.png"
+  },
+  {
+    index: "011",
+    collection: "personal",
+    category: "experiences",
+    title: "EyeSay",
+    subtitle: "See It. Say It. Live It.",
+    description:
+      "An offline-first assistive communication board with touch, keyboard, speech, and optional experimental webcam-gaze access.",
+    url: "https://eyesay.onrender.com/",
+    status: "Beta",
+    tags: ["Assistive Communication", "Offline First", "Accessible Design"],
+    visual: "image",
+    image: "assets/projects/eyesay.png"
+  },
+  {
+    index: "012",
+    collection: "business",
+    category: "intelligence",
+    title: "TensorBook",
+    subtitle: "Quantitative Sports Intelligence",
+    description:
+      "A source-aware sports research terminal built around transparent projections, market comparison, uncertainty, and responsible analysis.",
+    url: "https://tensor-book-web.onrender.com/",
+    status: "Live",
+    tags: ["Sports Intelligence", "Transparent Models", "Market Research"],
+    visual: "image",
+    image: "assets/projects/tensor-book.png"
   }
 ];
 
@@ -225,6 +280,18 @@ function createSentinelVisual() {
     </div>`;
 }
 
+function createBullshitVisual() {
+  return `
+    <div class="bullshit-screen" aria-hidden="true">
+      <div class="bullshit-lines"></div>
+      <div class="bullshit-mark"><span>ICB</span><i>CALIBRATED INTERVIEW</i></div>
+      <div class="bullshit-copy">
+        <span>I CALL BULLSH!T / VOICE PATTERN</span>
+        <strong>LISTEN.<br>CALIBRATE.</strong>
+      </div>
+    </div>`;
+}
+
 function projectMarkup(project) {
   const visual = project.visual === "signal"
     ? createSignalVisual()
@@ -236,7 +303,9 @@ function projectMarkup(project) {
           ? createMonaVisual()
           : project.visual === "sentinel"
             ? createSentinelVisual()
-            : createImageVisual(project);
+            : project.visual === "bullshit"
+              ? createBullshitVisual()
+              : createImageVisual(project);
   const projectUrl = project.page || project.url;
   const targetAttributes = project.page ? "" : 'target="_blank" rel="noopener"';
 

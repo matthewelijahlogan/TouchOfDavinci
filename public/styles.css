@@ -1888,6 +1888,90 @@ footer {
   50% { transform: translateY(190px) rotate(-19deg); opacity: 0.45; }
 }
 
+/* I Call Bullsh!t */
+.bullshit-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 68% 42%, rgba(215, 170, 65, 0.2), transparent 25%),
+    linear-gradient(135deg, #050505, #17130a 58%, #020202);
+}
+
+.bullshit-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(214, 169, 61, 0.17) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 169, 61, 0.17) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(500px) rotateX(58deg) scale(1.45);
+  transform-origin: bottom;
+}
+
+.bullshit-mark {
+  position: absolute;
+  top: 50%;
+  left: 67%;
+  display: grid;
+  width: 220px;
+  height: 220px;
+  place-items: center;
+  border: 1px solid rgba(218, 172, 64, 0.52);
+  border-radius: 50%;
+  box-shadow: 0 0 45px rgba(206, 158, 47, 0.12);
+  transform: translate(-50%, -50%);
+}
+
+.bullshit-mark::before {
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed rgba(255, 226, 154, 0.25);
+  border-radius: 50%;
+  content: "";
+  animation: haloSpin 18s linear infinite;
+}
+
+.bullshit-mark span {
+  color: #e4bd5d;
+  font: 600 4.6rem/1 var(--sans);
+  letter-spacing: -0.08em;
+  text-shadow: 0 0 28px rgba(223, 177, 67, 0.28);
+}
+
+.bullshit-mark i {
+  position: absolute;
+  bottom: 32px;
+  color: #a98338;
+  font: 500 0.46rem/1 var(--mono);
+  letter-spacing: 0.15em;
+}
+
+.bullshit-copy {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  left: 30px;
+}
+
+.bullshit-copy span {
+  display: block;
+  color: #9e7d35;
+  font: 500 0.5rem/1 var(--mono);
+  letter-spacing: 0.14em;
+}
+
+.bullshit-copy strong {
+  display: block;
+  margin-top: 18px;
+  color: #f4dfaa;
+  font: 600 clamp(2.4rem, 5vw, 4.8rem)/0.85 var(--sans);
+  letter-spacing: -0.065em;
+}
+
 /* Application collection gateways and pages */
 .portfolio-gateways {
   padding-top: 130px;
