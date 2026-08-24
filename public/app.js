@@ -165,6 +165,19 @@ const projects = [
     tags: ["Sports Intelligence", "Transparent Models", "Market Research"],
     visual: "image",
     image: "assets/projects/tensor-book.png"
+  },
+  {
+    index: "013",
+    collection: "business",
+    category: "intelligence",
+    title: "NOSTRADOMUS",
+    subtitle: "Predictive Global Intelligence",
+    description:
+      "An auditable early-warning system for global risk, combining calibrated forecasting, historical analogues, anomaly detection, and an optional symbolic-pattern research layer.",
+    url: "https://nostradomus.onrender.com/",
+    status: "In development",
+    tags: ["Global Intelligence", "Forecasting", "Applied AI"],
+    visual: "signal"
   }
 ];
 
