@@ -177,7 +177,8 @@ const projects = [
     url: "https://nostradomus.onrender.com/",
     status: "In development",
     tags: ["Global Intelligence", "Forecasting", "Applied AI"],
-    visual: "signal"
+    visual: "image",
+    image: "assets/projects/nostradomus-logo.png"
   }
 ];
 
