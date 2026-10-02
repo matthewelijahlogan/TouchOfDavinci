@@ -178,7 +178,7 @@ const projects = [
     status: "In development",
     tags: ["Global Intelligence", "Forecasting", "Applied AI"],
     visual: "image",
-    image: "assets/projects/nostradomus-logo.png"
+    image: "assets/projects/nostradomus-logo.png?v=portrait-20261002"
   }
 ];
 
