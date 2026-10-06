@@ -41,21 +41,6 @@ const projects = [
     image: "assets/projects/podwatch.png"
   },
   {
-    index: "004",
-    collection: "business",
-    category: "operations",
-    title: "Axis",
-    subtitle: "Staffing Solutions",
-    description:
-      "A secure staffing operations environment with role-aware access, protected views, and administrative control.",
-    url: "https://wheel-of-destiny-iww1.onrender.com/",
-    page: "projects/axis-staffing-solutions.html",
-    status: "Beta",
-    tags: ["Workforce Ops", "Access Control", "SaaS"],
-    visual: "image",
-    image: "assets/projects/axis-staffing-solutions.png"
-  },
-  {
     index: "005",
     collection: "personal",
     category: "experiences",
